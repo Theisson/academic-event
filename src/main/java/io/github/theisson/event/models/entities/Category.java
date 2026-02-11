@@ -1,8 +1,8 @@
 package io.github.theisson.event.models.entities;
 
+import java.util.Collections;
 import java.util.HashSet;
 import java.util.Set;
-
 import jakarta.persistence.*;
 
 @Entity
@@ -31,5 +31,9 @@ public class Category {
 
     public String getDescription() {
         return description;
+    }
+
+    public Set<Activity> getActivities() {
+        return Collections.unmodifiableSet(activities);
     }
 }
