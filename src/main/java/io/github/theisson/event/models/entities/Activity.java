@@ -29,6 +29,9 @@ public class Activity {
     @OneToMany(mappedBy = "activity")
     private Set<TimeBlock> timeBlocks = new HashSet<>();
 
+    @ManyToMany(mappedBy = "activities")
+    private Set<Participant> participants = new HashSet<>();
+
     protected Activity() {}
 
     public Activity(String name, String description, Double price, Category category) {
@@ -60,5 +63,22 @@ public class Activity {
 
     public Set<TimeBlock> getTimeBlocks() {
         return Collections.unmodifiableSet(timeBlocks);
+    }
+
+    public Set<Participant> getParticipants() {
+        return Collections.unmodifiableSet(participants);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Activity)) return false;
+        Activity activity = (Activity) o;
+        return id != null && id.equals(activity.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
     }
 }

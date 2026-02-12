@@ -36,4 +36,17 @@ public class Category {
     public Set<Activity> getActivities() {
         return Collections.unmodifiableSet(activities);
     }
+
+     @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Category)) return false;
+        Category category = (Category) o;
+        return id != null && id.equals(category.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return getClass().hashCode();
+    }
 }
